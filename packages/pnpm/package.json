@@ -1,6 +1,6 @@
 {
   "name": "@containerbase/semantic-release-pnpm",
-  "version": "1.0.0-semantic-release",
+  "version": "0.0.0-semantic-release",
   "description": "A pnpm plugin for semantic-release",
   "keywords": [
     "semantic-release",
