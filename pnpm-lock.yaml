@@ -14,8 +14,8 @@ importers:
   .:
     dependencies:
       '@semantic-release/npm':
-        specifier: 13.0.0-alpha.15
-        version: 13.0.0-alpha.15(patch_hash=0bcd62a55da39b62276477e6e43897ad5a187530f6a278c04efa4f16fd249551)(semantic-release@24.2.8(typescript@5.9.2))
+        specifier: 13.0.0-beta.1
+        version: 13.0.0-beta.1(patch_hash=0bcd62a55da39b62276477e6e43897ad5a187530f6a278c04efa4f16fd249551)(semantic-release@24.2.8(typescript@5.9.2))
     devDependencies:
       '@containerbase/eslint-plugin':
         specifier: 1.1.6
@@ -498,8 +498,8 @@ packages:
     peerDependencies:
       semantic-release: '>=20.1.0'
 
-  '@semantic-release/npm@13.0.0-alpha.15':
-    resolution: {integrity: sha512-WdcBF28L8oDLxmL1iRHm2HsREbpQZdvXhRrodLDXFw1hgSGPbhwJ7ZNncT+0G5I+eMhx9RiN82nZezmg9+W4Kw==}
+  '@semantic-release/npm@13.0.0-beta.1':
+    resolution: {integrity: sha512-JmUq9JbUrTrWpMIfOhMGVuK++9Q//q4XLP2FELZ3Ojvoq9XyxghUd8iLB+iT3g4e6nkGPxhF0BHue//N/KSlhA==}
     engines: {node: ^22.14.0 || >= 24.2.0}
     peerDependencies:
       semantic-release: '>=20.1.0'
@@ -3064,7 +3064,7 @@ snapshots:
       semver: 7.7.2
       tempy: 3.1.0
 
-  '@semantic-release/npm@13.0.0-alpha.15(patch_hash=0bcd62a55da39b62276477e6e43897ad5a187530f6a278c04efa4f16fd249551)(semantic-release@24.2.8(typescript@5.9.2))':
+  '@semantic-release/npm@13.0.0-beta.1(patch_hash=0bcd62a55da39b62276477e6e43897ad5a187530f6a278c04efa4f16fd249551)(semantic-release@24.2.8(typescript@5.9.2))':
     dependencies:
       '@semantic-release/error': 4.0.0
       aggregate-error: 5.0.0
