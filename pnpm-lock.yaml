@@ -29,6 +29,12 @@ importers:
       '@types/node':
         specifier: 22.18.3
         version: 22.18.3
+      '@types/semver':
+        specifier: 7.7.1
+        version: 7.7.1
+      '@types/signale':
+        specifier: 1.4.7
+        version: 1.4.7
       conventional-changelog-conventionalcommits:
         specifier: 9.1.0
         version: 9.1.0
@@ -59,9 +65,15 @@ importers:
       lint-staged:
         specifier: 16.1.6
         version: 16.1.6
+      npm:
+        specifier: 11.6.0
+        version: 11.6.0
       npm-run-all2:
         specifier: 8.0.4
         version: 8.0.4
+      pnpm:
+        specifier: 10.16.1
+        version: 10.16.1
       prettier:
         specifier: 3.6.2
         version: 3.6.2
@@ -80,51 +92,21 @@ importers:
 
   packages/pnpm:
     dependencies:
-      '@semantic-release/error':
-        specifier: ^4.0.0
-        version: 4.0.0
-      aggregate-error:
-        specifier: ^5.0.0
-        version: 5.0.0
       execa:
         specifier: ^9.0.0
         version: 9.6.0
-      fs-extra:
-        specifier: ^11.0.0
-        version: 11.3.2
-      lodash-es:
-        specifier: ^4.17.21
-        version: 4.17.21
-      nerf-dart:
-        specifier: ^1.0.0
-        version: 1.0.0
-      normalize-url:
-        specifier: ^8.0.0
-        version: 8.1.0
       npm:
         specifier: ^11.6.0
         version: 11.6.0
       pnpm:
         specifier: ^10.16.1
         version: 10.16.1
-      rc:
-        specifier: ^1.2.8
-        version: 1.2.8
-      read-pkg:
-        specifier: ^9.0.0
-        version: 9.0.1
-      registry-auth-token:
-        specifier: ^5.0.0
-        version: 5.1.0
       semantic-release:
         specifier: ^24.0.0
         version: 24.2.8(typescript@5.9.2)
       semver:
-        specifier: ^7.1.2
+        specifier: ^7.7.2
         version: 7.7.2
-      tempy:
-        specifier: ^3.0.0
-        version: 3.1.0
 
 packages:
 
@@ -520,6 +502,12 @@ packages:
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+
+  '@types/semver@7.7.1':
+    resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
+
+  '@types/signale@1.4.7':
+    resolution: {integrity: sha512-nc0j37QupTT7OcYeH3gRE1ZfzUalEUsDKJsJ3IsJr0pjjFZTjtrX1Bsn6Kv56YXI/H9rNSwAkIPRxNlZI8GyQw==}
 
   '@typescript-eslint/eslint-plugin@8.43.0':
     resolution: {integrity: sha512-8tg+gt7ENL7KewsKMKDHXR1vm8tt9eMxjJBYINf6swonlWgkYn5NwyIgXpbbDxTNU5DgpDFfj95prcTq2clIQQ==}
@@ -3058,6 +3046,12 @@ snapshots:
       undici-types: 6.21.0
 
   '@types/normalize-package-data@2.4.4': {}
+
+  '@types/semver@7.7.1': {}
+
+  '@types/signale@1.4.7':
+    dependencies:
+      '@types/node': 22.18.3
 
   '@typescript-eslint/eslint-plugin@8.43.0(@typescript-eslint/parser@8.43.0(eslint@9.35.0)(typescript@5.9.2))(eslint@9.35.0)(typescript@5.9.2)':
     dependencies:

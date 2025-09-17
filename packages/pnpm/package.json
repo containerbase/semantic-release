@@ -14,20 +14,10 @@
     "lib"
   ],
   "dependencies": {
-    "@semantic-release/error": "^4.0.0",
-    "aggregate-error": "^5.0.0",
     "execa": "^9.0.0",
-    "fs-extra": "^11.0.0",
-    "lodash-es": "^4.17.21",
-    "nerf-dart": "^1.0.0",
-    "normalize-url": "^8.0.0",
     "npm": "^11.6.0",
     "pnpm": "^10.16.1",
-    "rc": "^1.2.8",
-    "read-pkg": "^9.0.0",
-    "registry-auth-token": "^5.0.0",
-    "semver": "^7.1.2",
-    "tempy": "^3.0.0"
+    "semver": "^7.7.2"
   },
   "peerDependencies": {
     "semantic-release": "^24.0.0"
