@@ -10,6 +10,8 @@
     "build": "run-s 'build:*'",
     "build:pnpm": "node tools/build.js",
     "prepare": "run-s 'prepare:*'",
+    "lint:types": "run-p 'lint:types:*'",
+    "lint:types:default": "tsc",
     "prepare:husky": "husky",
     "prepare:build": "run-s 'build:*'",
     "prettier": "prettier --cache -c -u \"**/*.*\"",
