@@ -6,6 +6,3 @@ gitChecks: false
 ignoredBuiltDependencies:
   - esbuild
   - unrs-resolver
-
-patchedDependencies:
-  '@semantic-release/npm': patches/@semantic-release__npm.patch
