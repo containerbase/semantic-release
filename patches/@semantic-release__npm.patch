@@ -1,3 +1,45 @@
+diff --git a/index.js b/index.js
+index 590eace3c47d2b0c83789263affc66df4a2ef440..4083e978d625563d233154954ad1f381e6f3e95f 100644
+--- a/index.js
++++ b/index.js
+@@ -28,8 +28,8 @@ export async function verifyConditions(pluginConfig, context) {
+   try {
+     const pkg = await getPkg(pluginConfig, context);
+ 
+-    // Verify the npm authentication only if `npmPublish` is not false and `pkg.private` is not `true`
+-    if (pluginConfig.npmPublish !== false && pkg.private !== true) {
++    // Verify the npm authentication only if `npmPublish` is not false
++    if (pluginConfig.npmPublish !== false) {
+       await verifyNpmAuth(npmrc, pkg, context);
+     }
+   } catch (error) {
+@@ -49,7 +49,7 @@ export async function prepare(pluginConfig, context) {
+   try {
+     // Reload package.json in case a previous external step updated it
+     const pkg = await getPkg(pluginConfig, context);
+-    if (!verified && pluginConfig.npmPublish !== false && pkg.private !== true) {
++    if (!verified && pluginConfig.npmPublish !== false) {
+       await verifyNpmAuth(npmrc, pkg, context);
+     }
+   } catch (error) {
+@@ -71,7 +71,7 @@ export async function publish(pluginConfig, context) {
+   try {
+     // Reload package.json in case a previous external step updated it
+     pkg = await getPkg(pluginConfig, context);
+-    if (!verified && pluginConfig.npmPublish !== false && pkg.private !== true) {
++    if (!verified && pluginConfig.npmPublish !== false) {
+       await verifyNpmAuth(npmrc, pkg, context);
+     }
+   } catch (error) {
+@@ -96,7 +96,7 @@ export async function addChannel(pluginConfig, context) {
+   try {
+     // Reload package.json in case a previous external step updated it
+     pkg = await getPkg(pluginConfig, context);
+-    if (!verified && pluginConfig.npmPublish !== false && pkg.private !== true) {
++    if (!verified && pluginConfig.npmPublish !== false) {
+       await verifyNpmAuth(npmrc, pkg, context);
+     }
+   } catch (error) {
 diff --git a/lib/add-channel.js b/lib/add-channel.js
 index 7dfdaab6e2b8c517e8d706b33461a2769f0783a5..ae70cdc010755d50500d21f10cd2043a215e4249 100644
 --- a/lib/add-channel.js
