@@ -6,6 +6,10 @@
     "semantic-release",
     "pnpm"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/containerbase/semantic-release-pnpm.git"
+  },
   "license": "MIT",
   "author": "Michael Kriese <michael.kriese@gmx.de>",
   "type": "module",
