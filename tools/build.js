@@ -1,19 +1,19 @@
 import { build } from 'esbuild';
-import pkg from '../packages/pnpm/package.json' with { type: 'json' };
+import path from 'node:path';
 
 const baseDir = './packages/pnpm';
 const nodeVersion = 22;
 
+// build pnpm package
 await build({
-  entryPoints: [`${baseDir}/src/index.ts`],
+  absWorkingDir: path.resolve(import.meta.dirname, '..', baseDir),
+  entryPoints: ['src/index.ts'],
   bundle: true,
-  packages: 'bundle',
+  packages: 'external',
   platform: 'node',
   target: `node${nodeVersion}`,
   minify: false,
-  // tsconfig: 'tsconfig.dist.json',
   format: 'esm',
-  outdir: `${baseDir}/lib`,
+  outdir: 'lib',
   banner: { js: '/* eslint-disable */ // @ts-nocheck' },
-  external: Object.keys({ ...pkg.dependencies, ...pkg.peerDependencies }),
 });
