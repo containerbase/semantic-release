@@ -1,24 +1,55 @@
-import { validRange } from 'semver';
 import { execa } from 'execa';
-import { type PrepareContext, type PublishContext } from 'semantic-release';
+import {
+  type PrepareContext,
+  type PublishContext,
+  type VerifyConditionsContext,
+} from 'semantic-release';
+import AggregateError from 'aggregate-error';
+import getError from './get-error.ts';
+import { getChannel } from './util.ts';
+
+type PluginConfig = unknown;
 
 /**
- * Map a semantic-release `channel` value to the dist-tag that should be used when publishing to the
- * npm registry.
+ * Verify that the environment and plugin configuration are ready for a semantic-release run. This
+ * step is executed during the `verifyConditions` phase.
  *
- * If the provided channel is a valid semver range (`1.x`, `2&amp;#x2F;beta`, …) it will be prefixed with
- * `release-` to avoid clashes with the default tags like `latest` or `next` (mirrors the behaviour of
- * the official npm plugin). Otherwise the value is returned unchanged. When the channel is `null` or
- * `undefined` the function returns the default tag `latest`.
- * @param channel – The channel coming from `context.nextRelease.channel`.
- * @returns The npm dist-tag that should be used for the publish operation.
+ * The function delegates the heavy lifting to the local `verify` helper and caches the verification
+ * result so that subsequent life-cycle steps can skip running the checks again.
+ * @param pluginConfig Plugin configuration object.
+ * @param context Semantic-release provided context.
+ * @returns Resolves once verification has finished.
  */
-function getChannel(channel: string | null | undefined): string {
-  return channel
-    ? validRange(channel)
-      ? `release-${channel}`
-      : channel
-    : 'latest';
+export async function verifyConditions(
+  _pluginConfig: PluginConfig,
+  { cwd = '.', env, stderr, stdout, logger }: VerifyConditionsContext,
+): Promise<void> {
+  logger.log(`Verifying registry access`);
+
+  const res = await execa(
+    'pnpm',
+    [
+      '-r',
+      'publish',
+      '--dry-run',
+      '--tag',
+      'semantic-release-auth-check',
+      '--no-git-checks',
+    ],
+    {
+      cwd,
+      env,
+      stdout: ['pipe', stdout],
+      stderr: ['pipe', stderr],
+      lines: true,
+    },
+  );
+
+  for (const line of [...res.stdout, ...res.stderr]) {
+    if (line.includes('This command requires you to be logged in to ')) {
+      throw new AggregateError([getError('EINVALIDNPMAUTH')]);
+    }
+  }
 }
 
 /**
@@ -61,7 +92,6 @@ export async function prepare(
       env,
       stdout,
       stderr,
-      preferLocal: true,
     },
   );
 
@@ -93,7 +123,6 @@ export async function publish(
       env,
       stdout,
       stderr,
-      preferLocal: true,
     },
   );
 }

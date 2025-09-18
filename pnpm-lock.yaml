@@ -29,6 +29,9 @@ importers:
       '@types/node':
         specifier: 22.18.3
         version: 22.18.3
+      '@types/semantic-release__error':
+        specifier: 3.0.3
+        version: 3.0.3
       '@types/semver':
         specifier: 7.7.1
         version: 7.7.1
@@ -86,6 +89,12 @@ importers:
 
   packages/pnpm:
     dependencies:
+      '@semantic-release/error':
+        specifier: ^4.0.0
+        version: 4.0.0
+      aggregate-error:
+        specifier: ^5.0.0
+        version: 5.0.0
       execa:
         specifier: ^9.0.0
         version: 9.6.0
@@ -490,6 +499,9 @@ packages:
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
+
+  '@types/semantic-release__error@3.0.3':
+    resolution: {integrity: sha512-zFa+QAM80q65lQc5NVnKR5BgR0ChuLnBkfRBwa9xRqzAHOJx+mozSV2g1d489mKRqYezqxYC7XI0rEVoyF1f2w==}
 
   '@types/semver@7.7.1':
     resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
@@ -2957,6 +2969,8 @@ snapshots:
       undici-types: 6.21.0
 
   '@types/normalize-package-data@2.4.4': {}
+
+  '@types/semantic-release__error@3.0.3': {}
 
   '@types/semver@7.7.1': {}
 

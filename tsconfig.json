@@ -10,7 +10,8 @@
     "noEmit": true,
     "noImplicitOverride": true,
     "resolveJsonModule": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true
   },
   "exclude": ["node_modules", "bin", "dist", "coverage", "html"]
 }

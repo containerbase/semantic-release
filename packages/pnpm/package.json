@@ -18,6 +18,8 @@
     "lib"
   ],
   "dependencies": {
+    "@semantic-release/error": "^4.0.0",
+    "aggregate-error": "^5.0.0",
     "execa": "^9.0.0",
     "semver": "^7.7.2"
   },
