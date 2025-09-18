@@ -76,6 +76,25 @@ export async function prepare(
 
   logger.log('Write version %s to package.json in %s', version, cwd);
 
+  // update root `package.json`
+  await execa(
+    'pnpm',
+    [
+      'pnpm',
+      'version',
+      version,
+      '--no-git-tag-version',
+      '--allow-same-version',
+    ],
+    {
+      cwd,
+      env,
+      stdout,
+      stderr,
+    },
+  );
+
+  // update other workspace `package.json`
   await execa(
     'pnpm',
     [
