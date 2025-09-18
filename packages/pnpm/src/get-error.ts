@@ -6,7 +6,7 @@ export default (
   code: keyof typeof ERROR_DEFINITIONS,
   ctx: ErrorContext = {},
 ) => {
-  // eslint-disable-next-line import/namespace
+  // eslint-disable-next-line import-x/namespace
   const { message, details } = ERROR_DEFINITIONS[code](ctx);
   return new SemanticReleaseError(message, code, details);
 };

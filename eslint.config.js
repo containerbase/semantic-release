@@ -1,12 +1,13 @@
-/* eslint-disable import/no-named-as-default-member */
 import eslintContainerbase from '@containerbase/eslint-plugin';
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginPromise from 'eslint-plugin-promise';
-import tseslint from 'typescript-eslint';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import * as importX from 'eslint-plugin-import-x';
+import * as tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
 
-export default tseslint.config(
+export default defineConfig(
   {
     ignores: [
       'dist/',
@@ -26,12 +27,11 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
-  eslintPluginImport.flatConfigs.errors,
-  eslintPluginImport.flatConfigs.warnings,
-  eslintPluginImport.flatConfigs.recommended,
-  eslintPluginImport.flatConfigs.typescript,
   eslintPluginPromise.configs['flat/recommended'],
   eslintContainerbase.configs.all,
+  // @ts-expect-error -- wrong types
+  importX.flatConfigs.recommended,
+  importX.flatConfigs.typescript,
   {
     languageOptions: {
       ecmaVersion: 'latest',
@@ -44,11 +44,7 @@ export default tseslint.config(
     },
 
     settings: {
-      'import/resolver': {
-        typescript: {
-          alwaysTryTypes: true,
-        },
-      },
+      'import-x/resolver-next': [createTypeScriptImportResolver()],
     },
   },
   eslintConfigPrettier,
