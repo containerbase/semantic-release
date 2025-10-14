@@ -127,7 +127,7 @@ export async function publish(
     logger,
     nextRelease: { channel, version },
   }: PublishContext,
-): Promise<void> {
+): Promise<unknown> {
   const distributionTag = getChannel(channel);
 
   logger.log(
@@ -144,4 +144,9 @@ export async function publish(
       stderr,
     },
   );
+
+  // TODO: return published package data if we've a single package
+  // https://github.com/semantic-release/npm/blob/40f26b5ae77170f10773d16157fd420712d2e917/lib/get-release-info.js#L10
+  // Don't add version to success message.
+  return false;
 }
