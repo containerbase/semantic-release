@@ -22,7 +22,7 @@
     "@containerbase/semantic-release-pnpm": "workspace:*",
     "@eslint/js": "9.38.0",
     "@tsconfig/node20": "20.1.6",
-    "@tsconfig/strictest": "2.0.6",
+    "@tsconfig/strictest": "2.0.7",
     "@types/eslint-config-prettier": "6.11.3",
     "@types/node": "22.18.13",
     "@types/semantic-release__error": "3.0.3",
