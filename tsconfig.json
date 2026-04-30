@@ -4,11 +4,10 @@
     "@tsconfig/node22/tsconfig.json"
   ],
   "compilerOptions": {
-    "baseUrl": ".",
     "allowJs": true,
-    "module": "NodeNext",
     "noEmit": true,
     "noImplicitOverride": true,
+    "isolatedModules": true,
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "allowImportingTsExtensions": true
