@@ -4,6 +4,7 @@ packages:
 gitChecks: false
 strictPeerDependencies: true
 saveExact: true
+dedupePeers: true
 
 allowBuilds:
   esbuild: false
