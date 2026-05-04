@@ -8,6 +8,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      read-pkg:
+        specifier: ^10.1.0
+        version: 10.1.0
     devDependencies:
       '@containerbase/eslint-plugin':
         specifier: 2.1.0

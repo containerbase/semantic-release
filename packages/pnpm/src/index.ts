@@ -7,6 +7,7 @@ import {
 import AggregateError from 'aggregate-error';
 import getError from './get-error.ts';
 import { getChannel } from './util.ts';
+import { getPkg } from './get-pkg.ts';
 
 type PluginConfig = unknown;
 
@@ -76,43 +77,69 @@ export async function prepare(
 
   logger.log('Write version %s to package.json in %s', version, cwd);
 
-  // update root `package.json`
-  await execa(
-    'pnpm',
-    [
-      'pnpm',
-      'version',
-      version,
-      '--no-git-tag-version',
-      '--allow-same-version',
-    ],
-    {
-      cwd,
-      env,
-      stdout,
-      stderr,
-    },
-  );
+  const errors: Error[] = [];
 
-  // update other workspace `package.json`
-  await execa(
-    'pnpm',
-    [
-      '-r',
-      'exec',
+  try {
+    const pkg = await getPkg(cwd);
+
+    if (pkg.private != true) {
+      // update root `package.json`
+      await execa(
+        'pnpm',
+        [
+          'pnpm',
+          'version',
+          version,
+          '--no-git-tag-version',
+          '--allow-same-version',
+        ],
+        {
+          cwd,
+          env,
+          stdout,
+          stderr,
+        },
+      );
+    }
+  } catch (err) {
+    if (err instanceof AggregateError) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      errors.push(...err.errors);
+    }
+    errors.push(err as Error);
+  }
+
+  if (errors.length > 0) {
+    throw new AggregateError(errors);
+  }
+
+  try {
+    // update other workspace `package.json`
+    await execa(
       'pnpm',
-      'version',
-      version,
-      '--no-git-tag-version',
-      '--allow-same-version',
-    ],
-    {
-      cwd,
-      env,
-      stdout,
-      stderr,
-    },
-  );
+      [
+        '-r',
+        'exec',
+        'pnpm',
+        'version',
+        version,
+        '--no-git-tag-version',
+        '--allow-same-version',
+      ],
+      {
+        cwd,
+        env,
+        stdout,
+        stderr,
+      },
+    );
+  } catch (err) {
+    errors.push(err as Error);
+  }
+
+  if (errors.length > 0) {
+    throw new AggregateError(errors);
+  }
 
   // prepared = true;
 }

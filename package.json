@@ -17,6 +17,9 @@
     "prettier": "prettier --cache -c -u \"**/*.*\"",
     "prettier-fix": "prettier --cache -w -u \"**/*.*\""
   },
+  "dependencies": {
+    "read-pkg": "^10.1.0"
+  },
   "devDependencies": {
     "@containerbase/eslint-plugin": "2.1.0",
     "@containerbase/semantic-release-pnpm": "workspace:*",
