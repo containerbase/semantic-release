@@ -3,6 +3,7 @@ packages:
 
 gitChecks: false
 strictPeerDependencies: true
+saveExact: true
 
 allowBuilds:
   esbuild: false
