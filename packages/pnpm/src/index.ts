@@ -7,7 +7,6 @@ import {
 import AggregateError from 'aggregate-error';
 import getError from './get-error.ts';
 import { getChannel } from './util.ts';
-import { getPkg } from './get-pkg.ts';
 
 type PluginConfig = unknown;
 
@@ -80,27 +79,23 @@ export async function prepare(
   const errors: Error[] = [];
 
   try {
-    const pkg = await getPkg(cwd);
-
-    if (pkg.private != true) {
-      // update root `package.json`
-      await execa(
-        'pnpm',
-        [
-          'pnpm',
-          'version',
-          version,
-          '--no-git-tag-version',
-          '--allow-same-version',
-        ],
-        {
-          cwd,
-          env,
-          stdout,
-          stderr,
-        },
-      );
-    }
+    // update root `package.json`
+    await execa(
+      'npm',
+      [
+        'version',
+        version,
+        '--no-git-tag-version',
+        '--allow-same-version',
+        '--ignore-scripts',
+      ],
+      {
+        cwd,
+        env,
+        stdout,
+        stderr,
+      },
+    );
   } catch (err) {
     if (err instanceof AggregateError) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -120,11 +115,12 @@ export async function prepare(
       [
         '-r',
         'exec',
-        'pnpm',
+        'npm',
         'version',
         version,
         '--no-git-tag-version',
         '--allow-same-version',
+        '--ignore-scripts',
       ],
       {
         cwd,
