@@ -38,8 +38,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       '@types/semver':
-        specifier: 7.7.1
-        version: 7.7.1
+        specifier: 7.8.0
+        version: 7.8.0
       '@types/signale':
         specifier: 1.4.7
         version: 1.4.7
@@ -507,8 +507,8 @@ packages:
   '@types/semantic-release__error@3.0.3':
     resolution: {integrity: sha512-zFa+QAM80q65lQc5NVnKR5BgR0ChuLnBkfRBwa9xRqzAHOJx+mozSV2g1d489mKRqYezqxYC7XI0rEVoyF1f2w==}
 
-  '@types/semver@7.7.1':
-    resolution: {integrity: sha512-FmgJfu+MOcQ370SD0ev7EI8TlCAfKYU+B4m5T3yXc1CiRN94g/SZPtsCkk506aUDtlMnFZvasDwHHUcZUEaYuA==}
+  '@types/semver@7.8.0':
+    resolution: {integrity: sha512-1mAINjtQCXXeLkJ9ehXkwOcBpqtLxiVtKhpUf83DdRNdQKV0iXZpaHYqRr7nj+wvxuJzoAmAwXI+sCNMv1CzLQ==}
 
   '@types/signale@1.4.7':
     resolution: {integrity: sha512-nc0j37QupTT7OcYeH3gRE1ZfzUalEUsDKJsJ3IsJr0pjjFZTjtrX1Bsn6Kv56YXI/H9rNSwAkIPRxNlZI8GyQw==}
@@ -2554,7 +2554,7 @@ snapshots:
 
   '@types/semantic-release__error@3.0.3': {}
 
-  '@types/semver@7.7.1': {}
+  '@types/semver@7.8.0': {}
 
   '@types/signale@1.4.7':
     dependencies:
