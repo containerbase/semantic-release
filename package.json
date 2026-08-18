@@ -24,7 +24,7 @@
     "@containerbase/eslint-plugin": "2.1.1",
     "@containerbase/semantic-release-pnpm": "workspace:*",
     "@eslint/js": "10.0.1",
-    "@tsconfig/node22": "22.0.5",
+    "@tsconfig/node22": "22.0.6",
     "@tsconfig/strictest": "2.0.8",
     "@types/eslint-config-prettier": "6.11.3",
     "@types/node": "22.20.1",
