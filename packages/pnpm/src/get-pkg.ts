@@ -1,7 +1,9 @@
 import path from 'path';
+
 import AggregateError from 'aggregate-error';
 import { readPackage } from 'read-pkg';
 import type { NormalizedPackageJson } from 'read-pkg';
+
 import getError from './get-error.ts';
 
 export async function getPkg(cwd: string, pkgRoot?: string): Promise<NormalizedPackageJson> {

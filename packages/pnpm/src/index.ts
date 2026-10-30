@@ -5,6 +5,7 @@ import {
   type PublishContext,
   type VerifyConditionsContext,
 } from 'semantic-release';
+
 import getError from './get-error.ts';
 import { getChannel } from './util.ts';
 
