@@ -1,5 +1,5 @@
-import { build } from 'esbuild';
 import path from 'node:path';
+import { build } from 'esbuild';
 
 const baseDir = './packages/pnpm';
 const nodeVersion = 22;
@@ -15,5 +15,5 @@ await build({
   minify: false,
   format: 'esm',
   outdir: 'lib',
-  banner: { js: '/* eslint-disable */ // @ts-nocheck' },
+  banner: { js: '/* oxlint-disable */ // @ts-nocheck' },
 });

@@ -1,10 +1,10 @@
+import AggregateError from 'aggregate-error';
 import { execa } from 'execa';
 import {
   type PrepareContext,
   type PublishContext,
   type VerifyConditionsContext,
 } from 'semantic-release';
-import AggregateError from 'aggregate-error';
 import getError from './get-error.ts';
 import { getChannel } from './util.ts';
 
@@ -28,14 +28,7 @@ export async function verifyConditions(
 
   const res = await execa(
     'pnpm',
-    [
-      '-r',
-      'publish',
-      '--dry-run',
-      '--tag',
-      'semantic-release-auth-check',
-      '--no-git-checks',
-    ],
+    ['-r', 'publish', '--dry-run', '--tag', 'semantic-release-auth-check', '--no-git-checks'],
     {
       cwd,
       env,
@@ -61,14 +54,7 @@ export async function verifyConditions(
  */
 export async function prepare(
   _pluginConfig: unknown,
-  {
-    cwd = '.',
-    env,
-    stderr,
-    stdout,
-    logger,
-    nextRelease: { version },
-  }: PrepareContext,
+  { cwd = '.', env, stderr, stdout, logger, nextRelease: { version } }: PrepareContext,
 ): Promise<void> {
   // if (!verified) {
   //     await verify(pluginConfig, context);
@@ -82,13 +68,7 @@ export async function prepare(
     // update root `package.json`
     await execa(
       'npm',
-      [
-        'version',
-        version,
-        '--no-git-tag-version',
-        '--allow-same-version',
-        '--ignore-scripts',
-      ],
+      ['version', version, '--no-git-tag-version', '--allow-same-version', '--ignore-scripts'],
       {
         cwd,
         env,
@@ -98,7 +78,6 @@ export async function prepare(
     );
   } catch (err) {
     if (err instanceof AggregateError) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       errors.push(...err.errors);
     }
     errors.push(err as Error);
@@ -142,31 +121,18 @@ export async function prepare(
 
 export async function publish(
   _pluginConfig: unknown,
-  {
-    cwd = '.',
-    env,
-    stderr,
-    stdout,
-    logger,
-    nextRelease: { channel, version },
-  }: PublishContext,
+  { cwd = '.', env, stderr, stdout, logger, nextRelease: { channel, version } }: PublishContext,
 ): Promise<unknown> {
   const distributionTag = getChannel(channel);
 
-  logger.log(
-    `Publishing version ${version} to npm registry on dist-tag ${distributionTag}`,
-  );
+  logger.log(`Publishing version ${version} to npm registry on dist-tag ${distributionTag}`);
 
-  await execa(
-    'pnpm',
-    ['-r', 'publish', '--tag', distributionTag, '--no-git-checks'],
-    {
-      cwd,
-      env,
-      stdout,
-      stderr,
-    },
-  );
+  await execa('pnpm', ['-r', 'publish', '--tag', distributionTag, '--no-git-checks'], {
+    cwd,
+    env,
+    stdout,
+    stderr,
+  });
 
   // TODO: return published package data if we've a single package
   // https://github.com/semantic-release/npm/blob/40f26b5ae77170f10773d16157fd420712d2e917/lib/get-release-info.js#L10

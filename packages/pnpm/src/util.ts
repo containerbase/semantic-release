@@ -12,9 +12,5 @@ import validRange from 'semver/ranges/valid.js';
  * @returns The npm dist-tag that should be used for the publish operation.
  */
 export function getChannel(channel: string | null | undefined): string {
-  return channel
-    ? validRange(channel)
-      ? `release-${channel}`
-      : channel
-    : 'latest';
+  return channel ? (validRange(channel) ? `release-${channel}` : channel) : 'latest';
 }
