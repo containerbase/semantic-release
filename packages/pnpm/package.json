@@ -3,20 +3,20 @@
   "version": "0.0.0-semantic-release",
   "description": "A pnpm plugin for semantic-release",
   "keywords": [
-    "semantic-release",
-    "pnpm"
+    "pnpm",
+    "semantic-release"
   ],
+  "license": "MIT",
+  "author": "Michael Kriese <michael.kriese@gmx.de>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/containerbase/semantic-release.git"
   },
-  "license": "MIT",
-  "author": "Michael Kriese <michael.kriese@gmx.de>",
-  "type": "module",
-  "main": "lib/index.js",
   "files": [
     "lib"
   ],
+  "type": "module",
+  "main": "lib/index.js",
   "dependencies": {
     "@semantic-release/error": "^4.0.0",
     "aggregate-error": "^5.0.0",
