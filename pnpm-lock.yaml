@@ -10,8 +10,8 @@ importers:
   .:
     devDependencies:
       '@containerbase/oxlint-plugin':
-        specifier: 1.0.4
-        version: 1.0.4(oxlint@1.90.0)
+        specifier: 1.1.0
+        version: 1.1.0(oxlint@1.90.0)
       '@containerbase/semantic-release-pnpm':
         specifier: workspace:*
         version: link:packages/pnpm
@@ -111,8 +111,8 @@ packages:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
 
-  '@containerbase/oxlint-plugin@1.0.4':
-    resolution: {integrity: sha512-fs9guiStnwYDDl5mcqzBb7s6QzQU9AAImSVeixSBPkY88217rbhBNiY029Ckp2mSYkTAsjtpYbqEq5OMtqebVw==}
+  '@containerbase/oxlint-plugin@1.1.0':
+    resolution: {integrity: sha512-NcXxtW3gEa68HoQwsC81LlXR3nXVjQOeSKfkJEnXIPoxG0UITVHqY6UEivpeGpygpPQJtYywtmiuzwvJNqE6eQ==}
     engines: {node: '>=24.10.0', pnpm: '>=11.0.0'}
     peerDependencies:
       oxlint: '>=1.86.0'
@@ -1928,7 +1928,7 @@ snapshots:
   '@colors/colors@1.5.0':
     optional: true
 
-  '@containerbase/oxlint-plugin@1.0.4(oxlint@1.90.0)':
+  '@containerbase/oxlint-plugin@1.1.0(oxlint@1.90.0)':
     dependencies:
       '@oxlint/plugins': 1.90.0
       oxlint: 1.90.0(oxlint-tsgolint@7.0.2005)
