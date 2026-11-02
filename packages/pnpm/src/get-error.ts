@@ -1,4 +1,5 @@
 import SemanticReleaseError from '@semantic-release/error';
+
 import * as ERROR_DEFINITIONS from './definitions/errors.ts';
 import type { ErrorContext } from './definitions/errors.ts';
 
